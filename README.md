@@ -67,6 +67,9 @@ This project uses a modular monolith pattern:
 
 - **[MIGRATION_GUIDE.md](MIGRATION_GUIDE.md)** - Complete guide for the modular monolith structure
 - **[ENV_CONFIGURATION.md](ENV_CONFIGURATION.md)** - Environment variables setup across all components
+- **[CI_CD_SETUP.md](CI_CD_SETUP.md)** - CI/CD configuration for modular monolith
+- **[SECURITY_IMPROVEMENTS.md](SECURITY_IMPROVEMENTS.md)** - Security improvements and env vars
+- **[NODE_UPGRADE.md](NODE_UPGRADE.md)** - Node.js upgrade from 12.16.3 to 20.18.1 LTS
 - **[packages/user_management/ENV_SETUP.md](packages/user_management/ENV_SETUP.md)** - User Management engine environment setup
 
 ## 🔒 Security
