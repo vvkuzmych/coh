@@ -20,11 +20,11 @@ class User < ApplicationRecord
 
   # Role helper methods
   def administrator?
-    admin? || super_admin?
+    role_admin? || role_super_admin?
   end
 
   def regular_user?
-    guest? || member?
+    role_guest? || role_member?
   end
 
   def full_name
