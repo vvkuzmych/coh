@@ -1,6 +1,21 @@
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
+# Exclude bundler-installed gems and other generated files
+AllCops:
+  Exclude:
+    - 'gems/**/*'
+    - 'specifications/**/*'
+    - 'extensions/**/*'
+    - 'plugins/**/*'
+    - 'build_info/**/*'
+    - 'cache/**/*'
+    - 'doc/**/*'
+    - 'vendor/bundle/**/*'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'db/schema.rb'
+
 # Overwrite or add rules to create your own house style
 #
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`

@@ -7,6 +7,15 @@
 # Ignore bundler config for MPA
 /mpa/.bundle
 
+# Ignore gems directory (vendor/bundle alternative)
+/mpa/gems
+/mpa/specifications
+/mpa/extensions
+/mpa/plugins
+/mpa/build_info
+/mpa/cache
+/mpa/doc
+
 # Ignore all environment files in MPA
 /mpa/.env*
 
