@@ -28,6 +28,61 @@
     </content>
     <orderEntry type="jdk" jdkName="rbenv: 4.0.0" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="user_management (v0.1.0) [path][gem]" type="rubylib">
+        <properties>
+          <option name="additionalInfo">
+            <AdditionalInfo>
+              <option name="authors" value="ENV.fetch(&quot;GEM_AUTHOR_NAME&quot;, &quot;Unknown Author&quot;)" />
+              <option name="email" value="ENV.fetch(&quot;GEM_AUTHOR_EMAIL&quot;, &quot;noreply@example.com&quot;)" />
+              <option name="homepage" value="ENV.fetch(&quot;GEM_HOMEPAGE&quot;, &quot;https://github.com/example/repo&quot;)" />
+              <option name="summary" value="User Management Engine for COH" />
+            </AdditionalInfo>
+          </option>
+          <option name="dependencies">
+            <list>
+              <Dependency>
+                <option name="bounds">
+                  <list>
+                    <Bound>
+                      <option name="operator" value="&gt;=" />
+                      <option name="version" value="8.1.2" />
+                    </Bound>
+                  </list>
+                </option>
+                <option name="doRequire" value="true" />
+                <option name="name" value="rails" />
+              </Dependency>
+            </list>
+          </option>
+          <option name="fromPath" value="true" />
+          <option name="name" value="user_management" />
+          <option name="requirePaths">
+            <list>
+              <option value="lib" />
+            </list>
+          </option>
+          <option name="url" value="file://$MODULE_DIR$/packages/user_management" />
+          <option name="version" value="0.1.0" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/packages/user_management/app" />
+          <root url="file://$MODULE_DIR$/packages/user_management/bin" />
+          <root url="file://$MODULE_DIR$/packages/user_management/lib" />
+          <root url="file://$MODULE_DIR$/packages/user_management/config" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/packages/user_management/app" />
+          <root url="file://$MODULE_DIR$/packages/user_management/bin" />
+          <root url="file://$MODULE_DIR$/packages/user_management/lib" />
+          <root url="file://$MODULE_DIR$/packages/user_management/config" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/packages/user_management/bin" />
+        </excluded>
+      </library>
+    </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="action_text-trix (v2.1.16, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actioncable (v8.1.2, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v8.1.2, rbenv: 4.0.0) [gem]" level="application" />
@@ -54,7 +109,6 @@
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v3.0.2, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="date (v3.5.1, rbenv: 4.0.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="debug (v1.11.1, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="dotenv (v3.2.0, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.3, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ed25519 (v1.4.0, rbenv: 4.0.0) [gem]" level="application" />
@@ -120,13 +174,14 @@
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.49.0, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-performance (v1.26.1, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-rails (v2.34.3, rbenv: 4.0.0) [gem]" level="application" />
-    <orderEntry type="library" scope="TEST" name="rubocop-rails-omakase (v1.1.0, rbenv: 4.0.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-rails-omakase (v1.1.0, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-vips (v2.3.0, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="solid_cable (v3.0.12, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="solid_cache (v1.0.10, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="solid_queue (v1.3.0, rbenv: 4.0.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v2.9.0, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sshkit (v1.25.0, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.3.4, rbenv: 4.0.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stringio (v3.2.0, rbenv: 4.0.0) [gem]" level="application" />

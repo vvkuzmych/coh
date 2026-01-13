@@ -4,37 +4,51 @@
 # belong in git's global ignore instead:
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
-# Ignore bundler config.
-/.bundle
+# Ignore bundler config for MPA
+/mpa/.bundle
 
-# Ignore all environment files.
-/.env*
+# Ignore all environment files in MPA
+/mpa/.env*
 
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+# Ignore all logfiles and tempfiles in MPA
+/mpa/log/*
+/mpa/tmp/*
+!/mpa/log/.keep
+!/mpa/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
+/mpa/tmp/pids/*
+!/mpa/tmp/pids/
+!/mpa/tmp/pids/.keep
 
-# Ignore storage (uploaded files in development and any SQLite databases).
-/storage/*
-!/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
+# Ignore storage (uploaded files in development and any SQLite databases) in MPA
+/mpa/storage/*
+!/mpa/storage/.keep
+/mpa/tmp/storage/*
+!/mpa/tmp/storage/
+!/mpa/tmp/storage/.keep
 
-/public/assets
+/mpa/public/assets
 
-# Ignore key files for decrypting credentials and more.
-/config/*.key
+# Ignore key files for decrypting credentials and more in MPA
+/mpa/config/*.key
 
+/mpa/app/assets/builds/*
+!/mpa/app/assets/builds/.keep
 
-/app/assets/builds/*
-!/app/assets/builds/.keep
+/mpa/node_modules
 
-/node_modules
+# Ignore bundler config for packages (engines)
+/packages/*/.bundle
+/packages/*/vendor/bundle
+
+# Ignore environment files in packages (DO NOT COMMIT .env!)
+/packages/*/.env
+!/packages/*/.env.example
+
+# Ignore log and tmp files in packages
+/packages/*/log/*
+/packages/*/tmp/*
+
+# Ignore node_modules in packages
+/packages/*/node_modules
