@@ -1,8 +1,12 @@
 require_relative "lib/user_management/version"
 
-# Load environment variables from .env file if it exists
-require "dotenv"
-Dotenv.load(File.expand_path(".env", __dir__)) if File.exist?(File.expand_path(".env", __dir__))
+# Load environment variables from .env file if it exists (only if dotenv is available)
+begin
+  require "dotenv"
+  Dotenv.load(File.expand_path(".env", __dir__)) if File.exist?(File.expand_path(".env", __dir__))
+rescue LoadError
+  # dotenv not yet installed, use default values from ENV.fetch fallbacks
+end
 
 Gem::Specification.new do |spec|
   spec.name        = "user_management"

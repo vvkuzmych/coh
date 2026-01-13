@@ -102,8 +102,12 @@ GEM_ALLOWED_PUSH_HOST="https://gems.company.com"
 The gemspec file loads environment variables using `dotenv`:
 
 ```ruby
-require "dotenv"
-Dotenv.load(File.expand_path(".env", __dir__)) if File.exist?(File.expand_path(".env", __dir__))
+begin
+  require "dotenv"
+  Dotenv.load(File.expand_path(".env", __dir__)) if File.exist?(File.expand_path(".env", __dir__))
+rescue LoadError
+  # dotenv not yet installed, use default values from ENV.fetch fallbacks
+end
 
 Gem::Specification.new do |spec|
   spec.authors = [ ENV.fetch("GEM_AUTHOR_NAME", "Unknown Author") ]
@@ -111,6 +115,8 @@ Gem::Specification.new do |spec|
   # ... more configuration
 end
 ```
+
+**Note**: The `begin/rescue LoadError` ensures the gemspec can be read even before `dotenv` is installed (important for CI/CD).
 
 ### Fallback Values
 

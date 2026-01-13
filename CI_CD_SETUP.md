@@ -305,15 +305,24 @@ env:
 
 For engines that need `.env` configuration:
 
+**Important**: The `user_management` engine gemspec has **safe defaults** and doesn't require environment variables in CI. The gemspec uses `ENV.fetch` with fallback values:
+
+```ruby
+spec.authors = [ ENV.fetch("GEM_AUTHOR_NAME", "Unknown Author") ]
+spec.email   = [ ENV.fetch("GEM_AUTHOR_EMAIL", "noreply@example.com") ]
+```
+
+**Optional**: If you want to customize these values in CI, add to GitHub Secrets and use:
+
 ```yaml
-- name: Setup engine env
+- name: Setup engine env (optional)
   working-directory: packages/user_management
   run: |
     echo "GEM_AUTHOR_NAME=${{ secrets.GEM_AUTHOR_NAME }}" >> .env
     echo "GEM_AUTHOR_EMAIL=${{ secrets.GEM_AUTHOR_EMAIL }}" >> .env
 ```
 
-**Note**: Engine `.env` vars are only needed when **building/packaging** the gem, not for runtime.
+**Note**: Engine `.env` vars are only used when **building/packaging** the gem, not for runtime. CI works fine without them thanks to the fallback values.
 
 ## 📚 Related Documentation
 
