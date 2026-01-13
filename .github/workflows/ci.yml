@@ -42,7 +42,7 @@ jobs:
           working-directory: mpa
 
       - name: Prepare RuboCop cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           DEPENDENCIES_HASH: ${{ hashFiles('.ruby-version', 'mpa/**/.rubocop.yml', 'mpa/**/.rubocop_todo.yml', 'mpa/Gemfile.lock') }}
         with:
