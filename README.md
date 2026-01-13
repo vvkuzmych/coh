@@ -25,8 +25,16 @@ coh/
 cd mpa
 bundle install
 rails db:setup
-rails server
+
+# Start the server (choose one):
+rails server        # Standard Rails command
+# or
+bin/rails s        # Direct bin command
+# or
+./start-server.sh  # Custom script (includes asset building)
 ```
+
+Visit: http://localhost:3000
 
 ### 2. Setup Engine Environment Variables
 
@@ -71,6 +79,7 @@ This project uses a modular monolith pattern:
 - **[CI_FIX_DOTENV.md](CI_FIX_DOTENV.md)** - Fix for dotenv loading error in CI
 - **[SECURITY_IMPROVEMENTS.md](SECURITY_IMPROVEMENTS.md)** - Security improvements and env vars
 - **[NODE_UPGRADE.md](NODE_UPGRADE.md)** - Node.js upgrade from 12.16.3 to 20.18.1 LTS
+- **[RUBY_DOWNGRADE.md](RUBY_DOWNGRADE.md)** - Ruby downgrade from 4.0.0 (preview) to 3.3.6 (stable)
 - **[packages/user_management/ENV_SETUP.md](packages/user_management/ENV_SETUP.md)** - User Management engine environment setup
 
 ## 🔒 Security
