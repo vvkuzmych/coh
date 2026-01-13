@@ -21,11 +21,11 @@ jobs:
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         working-directory: mpa
-        run: bin/brakeman --no-pager
+        run: bundle exec brakeman --no-pager
       
       - name: Scan for known security vulnerabilities in gems used
         working-directory: mpa
-        run: bin/bundler-audit
+        run: bundle exec bundler-audit
       
   lint:
     runs-on: ubuntu-latest
@@ -53,5 +53,5 @@ jobs:
 
       - name: Lint code for consistent style
         working-directory: mpa
-        run: bin/rubocop -f github
+        run: bundle exec rubocop -f github
 
