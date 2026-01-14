@@ -2,9 +2,20 @@ class Document < ApplicationRecord
   # Note: user_id foreign key exists, but we access User through PublicApi
   # No direct association to UserManagement::User (engine model)
 
+  # Document status enum
+  enum :status, {
+    uploaded: 0,
+    reviewed: 1,
+    signed: 2,
+    archived: 3
+  }, prefix: true
+
   validates :title, presence: true
   validates :user_id, presence: true
   validates :storage_bytes, numericality: { greater_than_or_equal_to: 0 }
+
+  # Status-based scopes
+  scope :by_status, ->(status) { where(status: status) }
 
   # Calculate storage bytes from content before save
   before_save :calculate_storage_bytes
