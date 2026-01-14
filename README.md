@@ -2,17 +2,18 @@
 
 ## Welcome to the Career Opportunities Hub (COH) 👋
 
-This repository serves as a central hub for exploring career opportunities at our company. It contains example projects, exercises, and supporting materials designed to give candidates a realistic view of how we work.
+**Career Opportunities Hub (COH)** is a recruitment management application designed to streamline the hiring process and provide a comprehensive platform for managing career opportunities within your organization.
 
-COH is intended for engineers and non-engineers alike and focuses on clarity, collaboration, and practical problem-solving.
+This application enables recruiters and hiring managers to efficiently manage candidates, track applications, organize documents, and facilitate a transparent hiring workflow. COH is built for teams of all sizes and focuses on clarity, collaboration, and data-driven decision-making.
 
 ## 🎯 Purpose
 
-The goals of this repository are to:
-* Provide a single entry point for career-related exercises and materials
-* Share realistic, representative projects
-* Create a fair and transparent candidate experience
-* Support multiple roles and disciplines
+COH is designed to:
+* **Manage recruitment workflows** - Track candidates through the entire hiring pipeline
+* **Organize candidate documents** - Store and manage resumes, portfolios, and other materials by status (uploaded, reviewed, signed, archived)
+* **Support multi-user collaboration** - Enable teams to work together with role-based access (guest, member, admin, super admin)
+* **Provide account-based organization** - Group users and documents under organizational accounts
+* **Deliver transparent reporting** - Track metrics like document counts, storage usage, and user activity
 
 ## 🏗️ Technical Architecture
 
@@ -107,27 +108,23 @@ bundle install
 - Can be developed independently
 - Mounted into the main application
 
-Each project or exercise contains its own README with detailed instructions.
+Each module contains its own documentation with detailed setup instructions.
 
-## 🧭 What We Value
+## ✨ Key Features
 
-We're interested in:
-* **Clear thinking and communication** - Can you explain your decisions?
-* **Practical problem-solving** - Real-world solutions over theoretical perfection
-* **Thoughtful trade-offs** - Understanding when to optimize vs. when "good enough" is best
-* **Maintainable and readable work** - Code that others can understand and extend
+COH provides comprehensive recruitment management capabilities:
 
-**Remember:** There is often more than one correct solution. We value your reasoning as much as the result.
-
-## 🤝 Inclusivity
-
-COH is designed to be:
-* **Role-agnostic where possible** - Exercises suitable for various backgrounds
-* **Accessible to people with different experience levels** - Clear instructions and context
-* **Focused on skills, not trick questions** - Real problems, not puzzles
-* **Open to thoughtful assumptions** - If something is unclear, document your reasoning
-
-If you have questions or need clarification, please reach out to your point of contact.
+* **User Management** - Role-based access control (guest, member, admin, super admin)
+* **Account Organization** - Group users and resources under organizational accounts
+* **Document Management** - Track candidate documents through multiple statuses:
+  - **Uploaded** - Initial document submission
+  - **Reviewed** - Documents under review
+  - **Signed** - Approved/finalized documents
+  - **Archived** - Historical/completed documents
+* **GraphQL API** - Modern API architecture for efficient data querying
+* **Modular Architecture** - Clean separation of concerns using Rails Engines
+* **Storage Tracking** - Monitor document storage usage per account
+* **Audit Trail** - Track creation and update timestamps for all records
 
 ## 💻 For Engineers: System Requirements
 
@@ -164,18 +161,30 @@ See [Getting Started](#-getting-started) for setup instructions.
 - Keep dependencies up to date (see Dependabot PRs)
 - See [SECURITY_IMPROVEMENTS.md](SECURITY_IMPROVEMENTS.md) for details
 
-## 📬 Questions & Support
+## 📊 Data Models
 
-If you have questions or need clarification:
-1. Check the relevant documentation in this repository
-2. Review the specific exercise or project README
-3. Contact your point of contact with specific questions
+**Core Entities:**
+- **Accounts** - Organizations with multiple users
+- **Users** - Team members with role-based permissions
+- **Documents** - Candidate materials tracked by status
 
-We encourage thoughtful questions and welcome discussions about trade-offs and design decisions.
+**Relationships:**
+- Account has many Users
+- User belongs to Account
+- User has many Documents
+- Documents are accessed via GraphQL for cross-module communication
 
-## 📝 License & Usage
+## 🚀 API & Integration
 
-This repository is intended solely for career exploration and evaluation purposes. Please do not reuse or redistribute its contents unless explicitly permitted.
+COH uses **GraphQL** for efficient data querying and cross-module communication:
+- Query accounts, users, and documents
+- Filter documents by status
+- Mutations for create, update, and delete operations
+- GraphiQL interface available in development mode at `/graphiql`
+
+## 📝 Contributing
+
+For development guidelines and contribution instructions, please refer to the technical documentation in the `/docs` directory.
 
 ---
 
