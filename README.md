@@ -152,6 +152,7 @@ See [Getting Started](#-getting-started) for setup instructions.
 ### Application-Specific
 - **[mpa/DATABASE_SCHEMA.md](mpa/DATABASE_SCHEMA.md)** - Complete database structure and relationships
 - **[mpa/USER_ROLES.md](mpa/USER_ROLES.md)** - User role system documentation
+- **[docs/SQL_JOINS_GUIDE.md](docs/SQL_JOINS_GUIDE.md)** - SQL JOINS in Ruby on Rails with examples
 
 ## 🔒 Security & Best Practices
 
