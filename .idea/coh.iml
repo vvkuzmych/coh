@@ -164,7 +164,7 @@
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="et-orbi (v1.4.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.10.0, rbenv: 3.3.6) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday (v2.14.0, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v2.14.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-follow_redirects (v0.5.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-http-cache (v2.5.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.4.2, rbenv: 3.3.6) [gem]" level="application" />
@@ -256,6 +256,7 @@
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.19.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="octokit (v10.0.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="open4 (v1.3.4, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="opensearch-ruby (v3.4.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="openssl (v3.2.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="os (v1.1.4, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ostruct (v0.6.3, rbenv: 3.3.6) [gem]" level="application" />
@@ -275,6 +276,7 @@
     <orderEntry type="library" scope="PROVIDED" name="pronto (v0.11.5, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pronto-flay (v0.11.2, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pronto-reek (v0.11.1, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pronto-rubocop (v0.11.6, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="propshaft (v1.3.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.16.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="psych (v5.3.1, rbenv: 3.3.6) [gem]" level="application" />
@@ -404,7 +406,6 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uber (v0.1.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v1.8.0, rbenv: 3.3.6) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v2.6.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v3.2.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-emoji (v4.2.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unindent (v1.0, rbenv: 3.3.6) [gem]" level="application" />

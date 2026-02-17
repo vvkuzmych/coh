@@ -1,0 +1,411 @@
+<div class="search-container">
+  <div class="search-header">
+    <h1>🔍 Document Search</h1>
+    <p class="subtitle">Powered by OpenSearch</p>
+  </div>
+
+  <!-- Search Form -->
+  <div class="search-form-card">
+    <%= form_with url: search_path, method: :get, local: true, class: "search-form" do |f| %>
+      <div class="search-input-group">
+        <%= f.text_field :q, 
+            value: @query,
+            placeholder: "Search documents...",
+            class: "search-input",
+            autofocus: true %>
+        
+        <%= f.select :status,
+            options_for_select(
+              [
+                ['All Statuses', ''],
+                ['Uploaded', 'uploaded'],
+                ['Reviewed', 'reviewed'],
+                ['Signed', 'signed'],
+                ['Archived', 'archived']
+              ],
+              @status
+            ),
+            {},
+            class: "status-select" %>
+        
+        <%= f.submit "Search", class: "search-button" %>
+      </div>
+
+      <div class="search-tips">
+        <small>
+          💡 Tips: Try "contract", "payment", "agreement", etc.
+        </small>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Flash Messages -->
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      ✅ <%= flash[:success] %>
+    </div>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-info">
+      ℹ️ <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      ⚠️ <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+  <!-- Search Results -->
+  <% if @documents && @documents.any? %>
+    <div class="results-header">
+      <h2>Search Results</h2>
+      <span class="result-count"><%= @total %> document(s) found</span>
+    </div>
+
+    <div class="results-grid">
+      <% @documents.each do |doc| %>
+        <div class="result-card">
+          <div class="result-header">
+            <h3 class="result-title">
+              <% if doc[:highlight] && doc[:highlight][:title] %>
+                <%= raw doc[:highlight][:title].first %>
+              <% else %>
+                <%= doc[:title] %>
+              <% end %>
+            </h3>
+            <span class="result-score">Score: <%= doc[:score].round(2) %></span>
+          </div>
+
+          <div class="result-body">
+            <% if doc[:highlight] && doc[:highlight][:content] %>
+              <p class="result-excerpt">
+                <%= raw doc[:highlight][:content].first %>...
+              </p>
+            <% else %>
+              <p class="result-excerpt">
+                <%= truncate(doc[:content], length: 200) %>
+              </p>
+            <% end %>
+          </div>
+
+          <div class="result-footer">
+            <div class="result-footer-left">
+              <span class="result-status status-<%= doc[:status] %>">
+                <%= doc[:status]&.humanize %>
+              </span>
+              <span class="result-id">ID: <%= doc[:id] %></span>
+            </div>
+            <a href="<%= document_path(doc[:id]) %>" class="view-link" data-turbo="false">
+              View Document →
+            </a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% elsif @query.present? %>
+    <div class="no-results">
+      <div class="no-results-icon">🔍</div>
+      <h3>No documents found</h3>
+      <p>Try different keywords or check your spelling</p>
+    </div>
+  <% else %>
+    <div class="welcome-message">
+      <div class="welcome-icon">📚</div>
+      <h3>Welcome to Document Search</h3>
+      <p>Enter keywords above to search through documents</p>
+      
+      <div class="example-searches">
+        <h4>Try these searches:</h4>
+        <ul>
+          <li><a href="<%= search_path(q: 'contract') %>">contract</a></li>
+          <li><a href="<%= search_path(q: 'payment') %>">payment</a></li>
+          <li><a href="<%= search_path(q: 'agreement') %>">agreement</a></li>
+          <li><a href="<%= search_path(q: 'test') %>">test</a></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .search-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .search-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+
+  .subtitle {
+    color: #7f8c8d;
+    font-size: 1.2rem;
+  }
+
+  .search-form-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+  }
+
+  .search-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+
+  .status-select {
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    min-width: 180px;
+  }
+
+  .search-button {
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .search-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .search-tips {
+    text-align: center;
+    color: #7f8c8d;
+  }
+
+  .alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+  }
+
+  .alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  .results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .result-count {
+    color: #7f8c8d;
+    font-size: 14px;
+  }
+
+  .results-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .result-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+  }
+
+  .result-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+  }
+
+  .result-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin: 0;
+    flex: 1;
+  }
+
+  .result-title em {
+    background: #fff3cd;
+    font-style: normal;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+
+  .result-score {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .result-body {
+    margin-bottom: 15px;
+  }
+
+  .result-excerpt {
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .result-excerpt em {
+    background: #fff3cd;
+    font-style: normal;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+
+  .result-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+  }
+
+  .result-footer-left {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .view-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 6px;
+    transition: all 0.3s;
+    background: #e3f2fd;
+  }
+
+  .view-link:hover {
+    background: #3498db;
+    color: white;
+    transform: translateX(5px);
+  }
+
+  .result-status {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .status-uploaded { background: #e3f2fd; color: #1976d2; }
+  .status-reviewed { background: #fff3cd; color: #856404; }
+  .status-signed { background: #d4edda; color: #155724; }
+  .status-archived { background: #f8d7da; color: #721c24; }
+
+  .result-id {
+    color: #999;
+    font-size: 12px;
+  }
+
+  .no-results, .welcome-message {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+  }
+
+  .no-results-icon, .welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+
+  .welcome-message h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+  }
+
+  .example-searches {
+    margin-top: 40px;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .example-searches h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+
+  .example-searches ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .example-searches li {
+    margin: 10px 0;
+  }
+
+  .example-searches a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 16px;
+    display: inline-block;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+
+  .example-searches a:hover {
+    background: #e3f2fd;
+  }
+</style>

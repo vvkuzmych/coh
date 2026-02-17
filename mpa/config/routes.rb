@@ -16,6 +16,18 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  # API routes (JSON)
+  namespace :api do
+    resources :documents, only: [:index, :show]
+  end
+
+  # Search routes (OpenSearch integration)
+  get "search", to: "search#index", as: :search_page
+  get "search/results", to: "search#search", as: :search
+  
+  # Document show page (React)
+  resources :documents, only: [:show]
+
   # Defines the root path route ("/")
   root "welcome#index"
 end

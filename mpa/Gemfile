@@ -67,3 +67,4 @@ group :development do
   # GraphQL IDE
   gem "graphiql-rails"
 end
+gem "opensearch-ruby"
