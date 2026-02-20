@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Swagger API Documentation
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+  
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
@@ -18,15 +22,24 @@ Rails.application.routes.draw do
 
   # API routes (JSON)
   namespace :api do
-    resources :documents, only: [:index, :show]
+    # API v1
+    namespace :v1 do
+      resources :documents, only: [:index, :show]
+    end
+    
+    # Redirect /api/documents to /api/v1/documents (backwards compatibility)
+    resources :documents, only: [:index, :show], controller: 'v1/documents'
   end
 
   # Search routes (OpenSearch integration)
   get "search", to: "search#index", as: :search_page
   get "search/results", to: "search#search", as: :search
   
-  # Document show page (React)
-  resources :documents, only: [:show]
+  # Document pages (React/TypeScript)
+  resources :documents, only: [:index, :show]
+
+  # TypeScript demo page
+  get "typescript-demo", to: "typescript_demo#index", as: :typescript_demo
 
   # Defines the root path route ("/")
   root "welcome#index"

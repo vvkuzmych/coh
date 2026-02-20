@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "build:watch": "webpack --config webpack.config.js --watch"
+    "build:watch": "webpack --config webpack.config.js --watch",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
@@ -12,10 +13,17 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
     "@babel/core": "^7.23.0",
     "@babel/preset-react": "^7.22.0",
-    "babel-loader": "^9.1.3"
+    "@babel/preset-typescript": "^7.23.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^7.1.4",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }

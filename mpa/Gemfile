@@ -68,3 +68,5 @@ group :development do
   gem "graphiql-rails"
 end
 gem "opensearch-ruby"
+gem "kaminari"  # API pagination
+gem "rswag"  # OpenAPI/Swagger documentation

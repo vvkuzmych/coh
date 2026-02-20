@@ -1,0 +1,45 @@
+# TypeScript
+*.tsbuildinfo
+dist/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Rails
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+.byebug_history
+
+# Ignore master key for decrypting credentials
+/config/master.key
+/config/credentials/*.key
+
+# Assets
+/public/assets
+/public/packs
+/public/packs-test
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

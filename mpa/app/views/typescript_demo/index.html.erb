@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TypeScript Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body>
+  <div style="padding: 20px; font-family: sans-serif; max-width: 1200px; margin: 0 auto;">
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+      <h1 style="margin: 0 0 10px 0;">🚀 TypeScript Demo Page</h1>
+      <p style="margin: 0; opacity: 0.9;">Interactive TypeScript component running in Rails</p>
+    </div>
+
+    <!-- TypeScript Component Mount Point -->
+    <div id="typescript-demo-root"></div>
+
+    <!-- Additional Info -->
+    <div style="margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 12px;">
+      <h2>📝 About This Page</h2>
+      <ul style="line-height: 1.8;">
+        <li><strong>Component:</strong> <code>HelloTypeScript.tsx</code></li>
+        <li><strong>Location:</strong> <code>app/javascript/components/HelloTypeScript.tsx</code></li>
+        <li><strong>Type:</strong> TypeScript + React</li>
+        <li><strong>Features:</strong> Full type safety, interfaces, type unions</li>
+      </ul>
+      
+      <h3 style="margin-top: 20px;">🔍 View Source Code:</h3>
+      <p style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
+        Open DevTools → Sources → webpack:// → app/javascript/components/HelloTypeScript.tsx
+      </p>
+
+      <h3 style="margin-top: 20px;">✅ TypeScript is Working Because:</h3>
+      <ol style="line-height: 1.8;">
+        <li>Component uses TypeScript interfaces (<code>Message</code>, <code>HelloTypeScriptProps</code>)</li>
+        <li>Type annotations on all functions and state</li>
+        <li>Type unions for message types (<code>'success' | 'info' | 'warning'</code>)</li>
+        <li>Generic types for state (<code>useState&lt;Message[]&gt;</code>)</li>
+        <li>Compiled from .tsx to .js with type checking</li>
+      </ol>
+    </div>
+
+    <div style="margin-top: 20px; padding: 20px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #2196F3;">
+      <h3 style="margin-top: 0; color: #1976d2;">💡 How to Verify TypeScript:</h3>
+      <pre style="background: white; padding: 15px; border-radius: 8px; overflow-x: auto;"><code># Terminal commands:
+cd /Users/vkuzm/RubymineProjects/coh/mpa
+
+# Check types
+npm run type-check
+
+# View source file
+cat app/javascript/components/HelloTypeScript.tsx
+
+# Rebuild (if needed)
+npm run build</code></pre>
+    </div>
+  </div>
+
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+  <script>
+    // Initialize TypeScript component
+    document.addEventListener('DOMContentLoaded', function() {
+      const rootElement = document.getElementById('typescript-demo-root');
+      if (rootElement && window.React && window.HelloTypeScript) {
+        const root = window.ReactDOM.createRoot(rootElement);
+        root.render(
+          window.React.createElement(window.HelloTypeScript, {
+            initialMessage: '🎉 TypeScript component loaded successfully!'
+          })
+        );
+      } else {
+        console.error('React or HelloTypeScript not found. Run: npm run build');
+      }
+    });
+  </script>
+</body>
+</html>

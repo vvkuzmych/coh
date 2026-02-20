@@ -1,0 +1,280 @@
+openapi: 3.0.1
+info:
+  title: Documents API V1
+  version: v1
+  description: API for document management with OpenSearch integration. Supports pagination, filtering, sorting, and full-text search.
+servers:
+  - url: http://localhost:3000
+    description: Development server
+  - url: https://api.example.com
+    description: Production server
+
+paths:
+  /api/v1/documents:
+    get:
+      summary: List documents
+      description: Retrieve a paginated list of documents with optional filtering, sorting, and search
+      tags:
+        - Documents
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+            example: 1
+        - name: per_page
+          in: query
+          description: Items per page (max 100)
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+            example: 20
+        - name: q
+          in: query
+          description: Search query in title/content
+          required: false
+          schema:
+            type: string
+            example: contract
+        - name: search
+          in: query
+          description: Search query (alias for q)
+          required: false
+          schema:
+            type: string
+            example: payment
+        - name: status
+          in: query
+          description: Filter by document status
+          required: false
+          schema:
+            type: string
+            enum:
+              - draft
+              - reviewed
+              - signed
+              - archived
+            example: signed
+        - name: sort_by
+          in: query
+          description: Sort by field
+          required: false
+          schema:
+            type: string
+            enum:
+              - _score
+              - title
+              - status
+            default: _score
+            example: _score
+        - name: order
+          in: query
+          description: Sort direction
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: desc
+            example: desc
+      responses:
+        "200":
+          description: Documents found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Document"
+                  meta:
+                    $ref: "#/components/schemas/PaginationMeta"
+              example:
+                success: true
+                data:
+                  - id: abc123
+                    type: document
+                    attributes:
+                      title: Contract Agreement
+                      content: This is a test contract document...
+                      status: signed
+                  - id: def456
+                    type: document
+                    attributes:
+                      title: Payment Invoice
+                      content: Invoice for services rendered...
+                      status: reviewed
+                meta:
+                  total_count: 150
+                  current_page: 1
+                  per_page: 20
+                  total_pages: 8
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                success: false
+                error:
+                  message: Search failed
+                  details:
+                    - OpenSearch connection error
+
+  /api/v1/documents/{id}:
+    get:
+      summary: Get document by ID
+      description: Retrieve a single document by its ID from OpenSearch
+      tags:
+        - Documents
+      parameters:
+        - name: id
+          in: path
+          description: Document ID
+          required: true
+          schema:
+            type: string
+            example: abc123
+      responses:
+        "200":
+          description: Document found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: "#/components/schemas/Document"
+                  meta:
+                    type: object
+                    example: {}
+              example:
+                success: true
+                data:
+                  id: abc123
+                  type: document
+                  attributes:
+                    title: Contract Agreement
+                    content: Full document content with all details...
+                    status: signed
+                meta: {}
+        "404":
+          description: Document not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                success: false
+                error:
+                  message: Document not found
+                  details:
+                    - Document with ID abc123 not found in OpenSearch
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+              example:
+                success: false
+                error:
+                  message: Failed to fetch document
+                  details:
+                    - OpenSearch query failed
+
+components:
+  schemas:
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Document ID
+          example: abc123
+        type:
+          type: string
+          description: Resource type
+          example: document
+        attributes:
+          type: object
+          properties:
+            title:
+              type: string
+              description: Document title
+              example: Contract Agreement
+            content:
+              type: string
+              description: Document content
+              example: Full document content...
+            status:
+              type: string
+              description: Document status
+              enum:
+                - draft
+                - reviewed
+                - signed
+                - archived
+              example: signed
+
+    PaginationMeta:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          description: Total number of documents
+          example: 150
+        current_page:
+          type: integer
+          description: Current page number
+          example: 1
+        per_page:
+          type: integer
+          description: Items per page
+          example: 20
+        total_pages:
+          type: integer
+          description: Total number of pages
+          example: 8
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              description: Error message
+              example: Document not found
+            details:
+              type: array
+              items:
+                type: string
+              description: Detailed error messages
+              example:
+                - Document with ID abc123 not found
+
+tags:
+  - name: Documents
+    description: Document management operations

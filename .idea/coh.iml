@@ -207,6 +207,10 @@
     <orderEntry type="library" scope="PROVIDED" name="json-schema (v6.1.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jwt (v3.1.2, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kamal (v2.10.1, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="kaminari (v1.2.2, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="kaminari-actionview (v1.2.2, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="kaminari-activerecord (v1.2.2, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="kaminari-core (v1.2.2, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kramdown (v2.5.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kramdown-parser-gfm (v1.1.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.5, rbenv: 3.3.6) [gem]" level="application" />
@@ -328,7 +332,11 @@
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.13.6, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.13.5, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.13.7, rbenv: 3.3.6) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.6, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.13.7, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rswag (v2.17.0, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rswag-api (v2.17.0, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rswag-specs (v2.17.0, rbenv: 3.3.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rswag-ui (v2.17.0, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="rubocop (v0.52.1, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="rubocop (v1.28.2, rbenv: 3.3.6) [gem]" level="application" />
     <orderEntry type="library" scope="TEST" name="rubocop (v1.69.2, rbenv: 3.3.6) [gem]" level="application" />
